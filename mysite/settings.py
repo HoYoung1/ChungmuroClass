@@ -39,13 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'testblog',
     'rest_framework',
+    'school',
 ]
 
+# PAGINATIONCLASS 잊지말자
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # ' rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAdminUser',
     ],
-    'PAGE_SIZE':10
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+
 }
 
 MIDDLEWARE = [
@@ -120,7 +124,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
