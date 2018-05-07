@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'testblog',
     'rest_framework',
     'school',
+    'core',
 ]
 
 # PAGINATIONCLASS 잊지말자
@@ -48,11 +49,16 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAdminUser',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
     'PAGE_SIZE': 10
 
 }
 
+
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,7 +66,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'core.utils',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
