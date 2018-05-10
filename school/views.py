@@ -25,8 +25,6 @@ def student_join(request):
     body = json.loads(body_unicode)
 
     student_id = body['student_id']
-    name = body['name']
-    img_url = body['img_url']
     #print(student_id)
     #print(name)
     #print(img_url)
@@ -39,7 +37,7 @@ def student_join(request):
     except Student.DoesNotExist:
         return JsonResponse(
             {
-                'student_id': 0
+                'student_id': "0"
             }
         )
 
