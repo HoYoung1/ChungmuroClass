@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.utils import timezone
 
@@ -21,4 +23,12 @@ class Lecture(models.Model):
 
     def __str__(self):
         return self.class_name + '/' + self.professor
+
+    # classtime이 현재시간-1시간 한 시각전이면 다 종료처리
+    def state_lecture(self):
+        if self.class_start < datetime.now() - datetime.timedelta(hours=1):
+            return "end"
+        else:
+            return "on"
+
 
