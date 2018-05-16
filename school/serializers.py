@@ -9,9 +9,11 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class LectureSerializer(serializers.HyperlinkedModelSerializer):
+    stateLecture = serializers.ReadOnlyField(source="state_lecture")
+
     class Meta:
         model = Lecture
-        fields = ('id', 'professor', 'class_name', 'class_start', 'regDate')
+        fields = ('id', 'professor', 'class_name', 'class_start', 'regDate', 'stateLecture')
 
 
 class StudentJoinSerializer(serializers.HyperlinkedModelSerializer):
