@@ -104,7 +104,7 @@ def student_takeclass(request):
         lec.students.add(stu)
         return JsonResponse(
             {
-                'isValid': True,
+                'isExist': True,
                 'msg': 'take class Success'
             }
         )
@@ -112,7 +112,7 @@ def student_takeclass(request):
     except Student.DoesNotExist:
         return JsonResponse(
             {
-                'isValid': False,
+                'isExist': False,
                 'msg': 'student exist error'
             }
         )
@@ -120,7 +120,7 @@ def student_takeclass(request):
     except Lecture.DoesNotExist:
         return JsonResponse(
             {
-                'isValid': False,
+                'isExist': False,
                 'msg': 'lecture exist error'
             }
         )
