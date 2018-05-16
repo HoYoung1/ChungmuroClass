@@ -1,6 +1,6 @@
+from datetime import datetime, timedelta
 from django.db import models
 from django.utils import timezone
-import datetime
 
 
 class Student(models.Model):
@@ -25,7 +25,7 @@ class Lecture(models.Model):
 
 #현재시각이 5시이면 시작시간이 4시이전의 강의는 다 종료처리한다
     def state_lecture(self):
-        if self.class_start < datetime.now() - datetime.timedelta(hours=1):
+        if self.class_start < datetime.now() - timedelta(hours=1):
             return "end"
         else:
             return "on"
