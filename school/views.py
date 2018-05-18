@@ -2,8 +2,9 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.utils import json
 
-from school.serializers import StudentSerializer, LectureSerializer, StudentJoinSerializer, LectureDetailSerializer
-from school.models import Student, Lecture
+from school.serializers \
+    import StudentSerializer, LectureSerializer, StudentJoinSerializer, LectureDetailSerializer, CheckSerializer
+from school.models import Student, Lecture, Check
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -16,6 +17,12 @@ class StudentViewSet(viewsets.ModelViewSet):
 class LectureViewSet(viewsets.ModelViewSet):
     queryset = Lecture.objects.all().order_by("-id")
     serializer_class = LectureSerializer
+
+
+class CheckViewSet(viewsets.ModelViewSet):
+    queryset = Check.objects.all()
+    serializer_class = CheckSerializer
+
 
 @csrf_exempt # csrf라는 어떤 인증절차같은게 있는데 예외처리를 해준다. 안하면 에러뜸
 def student_join(request):
