@@ -29,3 +29,17 @@ class Lecture(models.Model):
             return "end"
         else:
             return "on"
+
+
+class Check(models.Model):
+    user_id = models.ForeignKey(Student, related_name='checks')
+    lecture_id = models.ForeignKey(Lecture, related_name='lecchecks', on_delete=models.CASCADE)
+    similarity = models.IntegerField()
+    col_index = models.IntegerField()
+    regDate = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.lecture_id.__str__() + '/' + self.user_id.__str__() + ' / 인덱스 : ' + str(self.col_index)
+
+    def __unicode__(self):
+        return '%d: %d' % (self.similarity, self.col_index)

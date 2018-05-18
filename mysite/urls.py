@@ -22,6 +22,7 @@ from school import views as school_views
 router = routers.DefaultRouter()
 router.register(r'school/students', school_views.StudentViewSet)
 router.register(r'school/lectures', school_views.LectureViewSet)
+router.register(r'school/checks', school_views.CheckViewSet)
 
 urlpatterns = [
     url(r'^school/students/join/', school_views.student_join),
