@@ -1,7 +1,7 @@
 # ChungmuroClass
 
 <p>
-<img src="/app/src/main/res/drawable-forReadme/1.png"  width="300">
+<img src="1.JPG"  width="300">
 </p>
 
 
