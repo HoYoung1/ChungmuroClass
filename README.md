@@ -1,4 +1,4 @@
-# ChungmuroClass
+# TEAM ChungmuroClass
 
 <p>
 <img src="1.JPG"  width="300">
