@@ -15,8 +15,10 @@ class StudentViewSet(viewsets.ModelViewSet):
 
 
 class LectureViewSet(viewsets.ModelViewSet):
+
     queryset = Lecture.objects.all().order_by("-id")
     serializer_class = LectureSerializer
+
 
 
 class CheckViewSet(viewsets.ModelViewSet):
