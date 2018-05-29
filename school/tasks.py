@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from PIL import Image, ImageDraw, ImageGrab
+from PIL import Image, ImageDraw
 import boto3
 from pprint import pprint
 from io import BytesIO
