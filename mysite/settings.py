@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'school',
     'core',
+    'background_task',
 ]
+
+BACKGROUND_TASK_RUN_ASYNC=True
 
 # PAGINATIONCLASS 잊지말자
 REST_FRAMEWORK = {

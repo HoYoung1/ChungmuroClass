@@ -20,7 +20,6 @@ class LectureViewSet(viewsets.ModelViewSet):
     serializer_class = LectureSerializer
 
 
-
 class CheckViewSet(viewsets.ModelViewSet):
     queryset = Check.objects.all()
     serializer_class = CheckSerializer
@@ -58,6 +57,7 @@ def student_join(request):
 
 @csrf_exempt
 def student_istaken(request):
+
     # 수업참가버튼을 누를때 이미 참가버튼을 눌렀었던 학생은 True를 반환합니다
     print('istaken start')
     body_unicode = request.body.decode('utf-8')
@@ -88,7 +88,6 @@ def student_istaken(request):
                 'msg': 'need participate in'
             }
         )
-
 
 
 @csrf_exempt
@@ -168,7 +167,7 @@ def student_changeimg(request):
         stu.save()
         return JsonResponse(
             {
-                'isValid': True,
+                'isExist': True,
                 'msg': 'student img_url is changed'
             }
         )
@@ -176,7 +175,7 @@ def student_changeimg(request):
     except Student.DoesNotExist:
         return JsonResponse(
             {
-                'isValid': False,
+                'isExist': False,
                 'msg': 'student exist error'
             }
         )

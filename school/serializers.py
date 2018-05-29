@@ -9,11 +9,11 @@ class CheckSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
-    checks = serializers.StringRelatedField(many=True)
+    #checks = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Student
-        fields = ('id', 'student_id', 'name', 'img_url', 'checks')
+        fields = ('id', 'student_id', 'name', 'img_url')
 
 
 class LectureSerializer(serializers.HyperlinkedModelSerializer):

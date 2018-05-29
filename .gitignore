@@ -3,6 +3,10 @@
 
 ./nohup.out
 
+# userImg directory is user's faces
+
+./userImg/*
+
 
 # Created by https://www.gitignore.io/api/django
 
