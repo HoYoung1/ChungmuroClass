@@ -76,7 +76,7 @@ def faceS(target, source, dirname):
     print("source : ", source)
     print("들어왓다잉")
 
-    bucket = 'chungmuroclass-userfiles-mobilehub-486279433/jsaS3'
+    bucket = 'chungmuroclass-userfiles-mobilehub-486279433'
     sourceFile = source
     targetFile = target
 
