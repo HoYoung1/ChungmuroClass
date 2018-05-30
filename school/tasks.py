@@ -37,10 +37,11 @@ def insert_check(id):
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
-            print(stu.name + "학생의 FaceMatch 를 시작합니다")
+            print()
+            print()
+            print("###########"+ stu.name + "학생의 FaceMatch 를 시작합니다" + "###########")
             dirname = "userImg/" + str(stu.id) + "_" + str(
                 stu.name)  # 잘라진 이미지가 어디 저장될지도 인자로 전달해줘야함. 이 디렉토리는 유저가 새로 추가될때 자동으로 생성됨.
-            print("dirname : ", dirname)
             targetName = str(id) + "_" + str(i+1)+".jpg"
             similar = faceS(targetName, stu.img_url,
                             dirname)  # 이부분이 핵심임 aws api 사용해서 유사도 값도받아오고 얼굴 이미지도잘라서 디렉토리에 넣음 .
@@ -72,9 +73,8 @@ def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡
 
 
 def faceS(target, source, dirname):
-    print("target : ", target)
-    print("source : ", source)
-    print("들어왓다잉")
+    print("target(수업중찍힌사진) : ", target)
+    print("source(학생프로필사진) : ", source)
 
     bucket = 'chungmuroclass-userfiles-mobilehub-486279433'
     sourceFile = source
@@ -83,18 +83,23 @@ def faceS(target, source, dirname):
     client = boto3.client('rekognition')
     s3 = boto3.client('s3')
 
-    response = client.compare_faces(SimilarityThreshold=80,
-                                    SourceImage={'S3Object': {'Bucket': bucket, 'Name': sourceFile}},
-                                    TargetImage={'S3Object': {'Bucket': bucket, 'Name': targetFile}})
-    print()
+    try:
+        response = client.compare_faces(SimilarityThreshold=80,
+                                        SourceImage={'S3Object': {'Bucket': bucket, 'Name': sourceFile}},
+                                        TargetImage={'S3Object': {'Bucket': bucket, 'Name': targetFile}})
+    except Exception as e:
+        print()
+        print("compare_faces API 호출 중 에러가 발생하였습니다.")
+        print()
+        return 101
+
     #print(response) #response는 일단 출력하지말자 값이너무많음.
-    print()
+
 
     url = '{}/{}/{}'.format(s3.meta.endpoint_url, bucket, target)
     imgbytes = get_image_from_url(url)
-    print()
-    print(url)
-    print()
+
+
     img = Image.open(BytesIO(imgbytes))  # 이거 사용하려면 버킷 폴리시 설정 변경해야함
     (img_width, img_height) = img.size
     draw = ImageDraw.Draw(img)
@@ -102,14 +107,13 @@ def faceS(target, source, dirname):
     save_path = dirname
     # fname = "{}.jpg".format("{0:05d}".format(2))
     fname = datetime.today().strftime("%Y%m%d%H%M%S") + ".jpg"
-    savename = save_path + fname
+    savename = save_path + "/" + fname
     maxSimilar = 0
     for faceMatch in response['FaceMatches']:
         similar = faceMatch['Similarity']
         if similar > maxSimilar:
             maxSimilar = similar
         print()
-        print("similar 타입 : ", type(similar))
         position = faceMatch['Face']['BoundingBox']
         confidence = str(faceMatch['Face']['Confidence'])
         print()
@@ -117,14 +121,14 @@ def faceS(target, source, dirname):
         # draw.rectangle(bbox_to_coords(position, img_width, img_height)
         #
 
-        print("similar : ", end="")
+        print("일치율 : ", end="")
         print(similar)
 
         if similar > 80:  # 80이상일때만자르자
             crop_img = img.crop(bbox_to_coords(position, img_width, img_height))
             crop_img.save(savename)
-            print("얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다.")
-            print("파일 경로 :./" + savename)
+            print("#######"+"얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+"#######")
+            print("Crop 된 이미지 저장 경로 :./" + savename)
 
 
     return maxSimilar
