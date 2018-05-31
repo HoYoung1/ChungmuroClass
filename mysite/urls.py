@@ -30,6 +30,7 @@ urlpatterns = [
     # img 바꿀수있게.
     url(r'^school/lectures/istaken/', school_views.student_istaken),
     url(r'^school/lectures/take/', school_views.student_takeclass),
+    url(r'^download/apk',school_views.download_apk),
     url(r'^school/lectures/(?P<pk>\d+)/$', school_views.lecture_detail),
     # lectures/1, lectures/2 이런식으로 request 올꺼임.
     url(r'^', include(router.urls)),
