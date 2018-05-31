@@ -5,7 +5,7 @@ from rest_framework.utils import json
 from school.serializers \
     import StudentSerializer, LectureSerializer, StudentJoinSerializer, LectureDetailSerializer, CheckSerializer
 from school.models import Student, Lecture, Check
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -179,6 +179,12 @@ def student_changeimg(request):
                 'msg': 'student exist error'
             }
         )
+
+@csrf_exempt
+def download_apk(request):
+    #response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
+    response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
+    return response
 
 
 
