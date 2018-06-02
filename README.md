@@ -1,8 +1,9 @@
 # TEAM ChungmuroClass
 This is server source code(Python)
 
-Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
-2018-1 동국대 캡스톤디자인 프로젝트
+Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2  
+
+2018-1 동국대 캡스톤디자인 프로젝트  
 
 프로젝트명 : 얼굴 인식을 통한 자동출석체크 시스템    
 사용대상 : 서버 관리자  
