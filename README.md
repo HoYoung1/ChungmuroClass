@@ -2,15 +2,13 @@
 This is server source code(Python)
 
 Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
---------------------------------------------------------------------------------------------------
 2018-1 동국대 캡스톤디자인 프로젝트
 
 프로젝트명 : 얼굴 인식을 통한 자동출석체크 시스템    
 사용대상 : 서버 관리자  
 소프트웨어 : Python , Django-Framework  
-----------------------------------------------------------------------------------------------------
 
-소스코드 내용 :
+소스코드 내용 :  
 0. Django-rest-Framework 활용해 필요한 Restful api 구성 
 1. cv2활용 카메라 모듈(1분단위로 촬영 후 AWS S3 Storage저장), 
 2. AWS rekognition Face-detect api 활용해 얼굴 인식 후 draw 라이브러리 활용해 얼굴 Highlight , 
@@ -25,7 +23,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 </p>
 
 
-----------------------------------------------------------------------------------------------------
+
 how to use : 
 
 $git clone https://github.com/HoYoung1/ChungmuroClass.git
