@@ -182,8 +182,8 @@ def student_changeimg(request):
 
 @csrf_exempt
 def download_apk(request):
-    response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
-    #response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
+    #response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
+    response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
     return response
 
 
