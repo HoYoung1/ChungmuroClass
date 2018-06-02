@@ -9,6 +9,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 프로젝트명 : 얼굴 인식을 통한 자동출석체크 시스템    
 사용대상 : 서버 관리자  
 소프트웨어 : Python , Django-Framework  
+설명 : 학사시스템이라고 가정, 출석체크 프로세스가 진행되는 웹 서버  
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  
 **소스코드 내용 :**  
@@ -28,7 +29,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-# how to use :
+# How to use :
 
 $git clone https://github.com/HoYoung1/ChungmuroClass.git
 
