@@ -2,13 +2,15 @@
 This is server source code(Python)
 
 Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2  
-
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  
+  
 2018-1 동국대 캡스톤디자인 프로젝트  
 
 프로젝트명 : 얼굴 인식을 통한 자동출석체크 시스템    
 사용대상 : 서버 관리자  
 소프트웨어 : Python , Django-Framework  
 
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  
 소스코드 내용 :  
 0. Django-rest-Framework 활용해 필요한 Restful api 구성 
 1. cv2활용 카메라 모듈(1분단위로 촬영 후 AWS S3 Storage저장), 
@@ -18,7 +20,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 4. 추출된 얼굴 사진들을 이용해 구글 인셉션으로 이미지(얼굴사진) 학습 및 출석체크에 활용
 => Django-background-tasks를 활용해 매일 자정 배치를 돌려 당일에 수집된 이미지를 새로 학습시킵니다. 
 
-
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 <p>
 <img src="1.JPG"  width="300">
 </p>
