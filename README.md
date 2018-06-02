@@ -20,7 +20,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 4. AWS rekognition Face-compare api 활용해 일정 similar 이상 일 때 얼굴 사진 추출,  
 => 추출된 사진은 서버에 저장되며, S3 storage와 동기화 시켜 확인이 가능합니다.
 5. 추출된 얼굴 사진들을 이용해 구글 인셉션으로 이미지(얼굴사진) 학습 및 출석체크에 활용  
-=> Django-background-tasks를 활용해 매일 자정 배치를 돌려 당일에 수집된 이미지를 새로 학습시킵니다. 
+=> Django-background-tasks를 활용해 매일 자정 배치를 돌려 당일에 수집된 이미지를 계속 학습시킵니다. 
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 <p>
