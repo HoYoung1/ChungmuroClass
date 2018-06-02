@@ -27,8 +27,8 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 </p>
 
 
-
-**how to use : **
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+# how to use :
 
 $git clone https://github.com/HoYoung1/ChungmuroClass.git
 
@@ -45,5 +45,5 @@ $python3 manage.py migrate
 
 $python3 manage.py runserver
 
-**another seesion**
+**another seesion**  
 $python3 manage.py process_tasks
