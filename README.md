@@ -24,7 +24,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 <p>
-<img src="2.JPG"  width="300">
+<img src="2.jpg"  width="300">
 </p>
 
 
