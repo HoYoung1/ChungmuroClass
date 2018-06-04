@@ -24,7 +24,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 <p>
-<img src="1.JPG"  width="300">
+<img src="./1.JPG"  width="300">
 </p>
 
 
@@ -53,7 +53,7 @@ runserver 시키면 없는 모듈 목록 나옵니다.
 $pip install MODULE_NAME 
 ```
 
-**runserver 시키고 다른 세션에서**  
+##서버 작동 후 백그라운드 태스크를 위해 새로운 세션에서 아래 명령어를 입력합니다. 
 ```
 $python3 manage.py process_tasks
 ```
