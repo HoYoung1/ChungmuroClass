@@ -23,6 +23,8 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 => Django-background-tasks를 활용해 매일 자정 배치를 돌려 당일에 수집된 이미지를 계속 학습시킵니다. 
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+### 서버 MVC패턴 및 간단 설명 ###
+**※ views.py가 controller 역할을 합니다 **
 <p>
 <img src="2.jpg"  width="300">
 </p>
