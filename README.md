@@ -1,4 +1,4 @@
-# TEAM ChungmuroClass
+﻿# TEAM ChungmuroClass
 This is server source code(Python)
 
 Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2  
@@ -24,7 +24,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 <p>
-<img src="1.JPG"  width="300">
+<img src="2.JPG"  width="300">
 </p>
 
 
