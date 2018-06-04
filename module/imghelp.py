@@ -1,3 +1,10 @@
+#
+#Created By 김성현
+#이미지 가져오기 모듈
+#
+#
+
+
 import requests
 
 def get_image_from_url(imgurl):

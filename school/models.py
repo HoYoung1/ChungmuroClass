@@ -1,10 +1,17 @@
+#
+#Created By 정욱,김호영
+#
+#db table 기능 하는 Model 정의 , 총3가지 Student, Lecture, Check
+#
+#
+
 from datetime import datetime, timedelta
 from django.db import models
 from django.utils import timezone
 from school.tasks import say_hello, insert_check
 import os
 
-
+#Created By 정욱
 class Student(models.Model):
     student_id = models.CharField(max_length=64)
     name = models.CharField(max_length=12)
@@ -22,7 +29,7 @@ class Student(models.Model):
         if not os.path.exists("userImg/"+dirname):
             os.mkdir("userImg/"+dirname)
 
-
+#Created By 정욱
 class Lecture(models.Model):
     professor = models.CharField(max_length=12)
     class_name = models.CharField(max_length=32)
@@ -58,7 +65,7 @@ class Lecture(models.Model):
         else:
             return "on"
 
-
+#Created By 김호영
 class Check(models.Model):
     user_id = models.ForeignKey(Student, related_name='checks')
     lecture_id = models.ForeignKey(Lecture, related_name='lecchecks', on_delete=models.CASCADE)

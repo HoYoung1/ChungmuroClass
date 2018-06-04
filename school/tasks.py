@@ -1,3 +1,10 @@
+#
+#Created By 김성현,김호영
+#
+#포그라운드에서 돌릴경우 60분동안 응답이 안됨, 백그라운드 환경에서 체크가 되어야 하므로 백그라운드환경에서 돌림
+#
+#
+
 from __future__ import absolute_import
 from PIL import Image, ImageDraw
 import boto3
@@ -14,12 +21,12 @@ from mysite.celery import app
 # @app.task
 from school import models
 
-
+# Created By 김호영
 @background(schedule=1)
 def say_hello():  # 실제 백그라운드에서 작업할 내용을 task로 정의한다.
     print("Hello, celery!")
 
-
+# Created By 김호영
 @background(schedule=60)
 def test_bg(id):
     print("되라제발좀")
@@ -27,7 +34,7 @@ def test_bg(id):
     l1.professor = '호영으로바뀌나..?'
     l1.save()
 
-
+# Created By 김호영
 @background(schedule=60)  # 디폴트값은 60이나 시작하는시간을 인자로 전달해줌
 def insert_check(id):
     print("강의번호 : ", id)
@@ -52,18 +59,18 @@ def insert_check(id):
         print("다음 60초를 기다립니다.")
         time.sleep(60)  # 60초
 
-
+# Created By 김성현
 def get_image_from_url(imgurl):
     resp = requests.get(imgurl)
     imgbytes = resp.content
     return imgbytes
 
-
+# Created By 김성현
 def get_image_from_file(filename):
     with open(filename, 'rb') as imgfile:
         return imgfile.read()
 
-
+# Created By 김성현
 def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
     upper_left_x = bbox['Left'] * img_width
     upper_y = bbox['Top'] * img_height
@@ -71,7 +78,7 @@ def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡
     bottom_y = upper_y + (bbox['Height'] * img_height)
     return [upper_left_x, upper_y, bottom_right_x, bottom_y]
 
-
+# Created By 김성현
 def faceS(target, source, dirname):
     print("target(수업중찍힌사진) : ", target)
     print("source(학생프로필사진) : ", source)

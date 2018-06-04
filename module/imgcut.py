@@ -1,3 +1,11 @@
+#
+#Created By 김성현
+#AWS rekognition , face_detect API에서 JSON 값 추출후 얼굴 좌표를 가지고 ImageDraw라이브러리로 하이라이트
+#
+#
+
+
+
 from PIL import Image, ImageDraw
 import boto3
 from pprint import pprint

@@ -1,3 +1,9 @@
+#
+#Created By 김성현
+#imghelp, imgcut module 에서 사용방법 샘플
+#
+#
+
 from PIL import Image, ImageDraw
 import boto3
 from pprint import pprint

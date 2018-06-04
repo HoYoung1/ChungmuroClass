@@ -1,3 +1,11 @@
+#
+#Created By 정욱,김호영
+#
+#router 기능 및 url 링크
+#
+#
+
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

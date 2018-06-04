@@ -1,3 +1,12 @@
+#
+#Created By 조성재
+#
+#텐서플로우를 활용해 이미지(얼굴사진) 데이터들 학습, 얼굴 이미지를 넣었을 때 누구와 가장 가까운지 예측,정확도와 함께 결과 추출
+#
+#
+
+
+
 # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
