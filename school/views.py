@@ -1,3 +1,11 @@
+#
+#Created By 정욱,김호영
+#
+#안드로이드 어플에 데이터를 뿌려주는 기능. 이 Response를 받고 안드로이드 앱에서 기능 정의됨.
+#
+#
+
+
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.utils import json
@@ -8,23 +16,23 @@ from school.models import Student, Lecture, Check
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
-
+#Created By 김호영,정욱
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-
+#Created By 김호영,정욱
 class LectureViewSet(viewsets.ModelViewSet):
 
     queryset = Lecture.objects.all().order_by("-id")
     serializer_class = LectureSerializer
 
-
+#Created By 김호영,정욱
 class CheckViewSet(viewsets.ModelViewSet):
     queryset = Check.objects.all()
     serializer_class = CheckSerializer
 
-
+#Created By 김호영,정욱
 @csrf_exempt # csrf라는 어떤 인증절차같은게 있는데 예외처리를 해준다. 안하면 에러뜸
 def student_join(request):
     # 회원가입 아님, 로그인 이라고 봐야함. 결과값을 보고 회원가입된유저인지 아닌지 판단함.
@@ -54,7 +62,7 @@ def student_join(request):
     #     return JsonResponse(serializer.data)
 
 
-
+#Created By 김호영
 @csrf_exempt
 def student_istaken(request):
 
@@ -89,7 +97,7 @@ def student_istaken(request):
             }
         )
 
-
+#Created By 김호영,정욱
 @csrf_exempt
 def student_takeclass(request):
     # 수업에 참가하는 메소드
@@ -133,7 +141,7 @@ def student_takeclass(request):
             }
         )
 
-
+#Created By 김호영,정욱
 @csrf_exempt
 def lecture_detail(request, pk):
     # 해당 수업을 듣는 학생들을 반환합니다.
@@ -148,7 +156,7 @@ def lecture_detail(request, pk):
         serializer = LectureDetailSerializer(lecture, context={'request': request})
         return JsonResponse(serializer.data)
 
-
+#Created By 김호영
 @csrf_exempt
 def student_changeimg(request):
     # 사용자는 이미지 url을 바꿀수있음.
@@ -179,11 +187,11 @@ def student_changeimg(request):
                 'msg': 'student exist error'
             }
         )
-
+#Created By 정욱
 @csrf_exempt
 def download_apk(request):
-    response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
-    #response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
+    #response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
+    response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
     return response
 
 
