@@ -4,7 +4,7 @@ This is server source code(Python)
 Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2  
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  
   
-## 2018-1 동국대 캡스톤디자인 프로젝트## 
+### 2018-1 동국대 캡스톤디자인 프로젝트 
 
 프로젝트명 : 얼굴 인식을 통한 자동출석체크 시스템    
 사용대상 : 서버 관리자  
@@ -12,7 +12,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 설명 : 학사시스템이라고 가정, 출석체크 프로세스가 진행되는 웹 서버  
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  
-## 소스코드 내용 :##  
+### 소스코드 내용 :  
 
 1. Django-rest-Framework 활용해 필요한 Restful api 구성 
 2. cv2활용 카메라 모듈(1분단위로 촬영 후 AWS S3 Storage저장), 
@@ -24,7 +24,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 ## 서버 MVC패턴 및 간단 설명 ##
-**※views.py가 controller 역할을 합니다**
+**※Django-Framework에서는 views.py가 controller 역할을 합니다**
 <p>
 <img src="2.jpg"  width="300">
 </p>
