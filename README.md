@@ -53,7 +53,7 @@ runserver 시키면 없는 모듈 목록 나옵니다.
 $pip install MODULE_NAME 
 ```
 
-###서버 작동 후 백그라운드 태스크를 위해 새로운 세션에서 아래 명령어를 입력합니다.### 
+### 서버 작동 후 백그라운드 태스크를 위해 새로운 세션에서 아래 명령어를 입력합니다. ### 
 ```
 $python3 manage.py process_tasks
 ```
