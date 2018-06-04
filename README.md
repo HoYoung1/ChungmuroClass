@@ -30,7 +30,7 @@ Client(Android) source code is in https://github.com/HoYoung1/Chungmuroclass2
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 # How to use :
-
+```
 $git clone https://github.com/HoYoung1/ChungmuroClass.git
 
 $cd ChungmuroClass
@@ -48,3 +48,4 @@ $python3 manage.py runserver
 
 **another seesion**  
 $python3 manage.py process_tasks
+```
