@@ -48,11 +48,12 @@ $python3 manage.py runserver
 ```
 runserver 시키면 없는 모듈 목록 나옵니다.
 이때 필요한 모듈들 인스톨 시켜줍니다.
-'''
-$pip install MODULE_NAME 
-'''
 
-**unserver 시키고 다른 세션에서**  
+```
+$pip install MODULE_NAME 
+```
+
+**runserver 시키고 다른 세션에서**  
 ```
 $python3 manage.py process_tasks
 ```
