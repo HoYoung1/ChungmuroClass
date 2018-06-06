@@ -17,8 +17,7 @@ from pprint import pprint
 from io import BytesIO
 import requests
 
-AWS_ACCESS_KEY_ID = 'AKIAJB5YARVSURZIJATA'
-AWS_SECRET_ACCESS_KEY = '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'
+
 #bucket = 'chungmuroclass3'
 bucket = 'chungmuroclass-userfiles-mobilehub-486279433'
 
@@ -61,7 +60,7 @@ while True:
         realfilename = str(filename) + '.jpg'
         cv2.imwrite(realfilename, frame)#만든 파일 이름으로1분마다 이미지 파일 저장
         #저장한 이미지 파일을 s3로 자동 업로드
-        client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+        client = boto3.client('s3')
         transfer = S3Transfer(client)
         transfer.upload_file(os.getcwd() + '/' + realfilename, bucket, 'common' + '/' + realfilename)#realfile name 에 경로까지지정하면 s3내부에 경로가 생긴다.
 
@@ -97,7 +96,7 @@ while True:
         print(picture_num)
         img.show()  # 이미지 보이게     여기까지 성현이 코드 수정한 것
 
-        client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+        client = boto3.client('s3')
         transfer = S3Transfer(client)
         transfer.upload_file(os.getcwd() + '/' + fname, bucket,
                              fname, extra_args={'ACL': 'public-read', 'ContentType': "image/jpeg"})  # file name 에 경로까지지정하면 s3내부에 경로가 생긴다.
