@@ -24,7 +24,7 @@ bucket = 'chungmuroclass-userfiles-mobilehub-486279433'
 class_num = x = input("Enter a number: ")
 
 print(class_num)
-video = cv2.VideoCapture(1)
+video = cv2.VideoCapture(0)
 first = datetime.now()
 second = datetime.now()
 

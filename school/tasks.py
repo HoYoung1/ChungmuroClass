@@ -6,7 +6,7 @@
 #
 
 from __future__ import absolute_import
-from PIL import Image, ImageDraw
+재from PIL import Image, ImageDraw
 import boto3
 from pprint import pprint
 from io import BytesIO
@@ -58,6 +58,11 @@ def insert_check(id):
         print("현재 : " + str(i) + "분 / 60 분")
         print("다음 60초를 기다립니다.")
         time.sleep(60)  # 60초
+
+# Created By 조성재
+@background(schedule=60)
+def LearningModelStart():
+    
 
 # Created By 김성현
 def get_image_from_url(imgurl):
