@@ -3,7 +3,7 @@
 #
 #포그라운드에서 돌릴경우 60분동안 응답이 안됨, 백그라운드 환경에서 체크가 되어야 하므로 백그라운드환경에서 돌림
 #
-#
+#d
 
 from __future__ import absolute_import
 from PIL import Image, ImageDraw
