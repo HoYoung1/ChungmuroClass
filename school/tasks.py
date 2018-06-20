@@ -21,6 +21,7 @@ from mysite.celery import app
 # @app.task
 from school import models
 
+
 # Created By 김호영
 @background(schedule=1)
 def say_hello():  # 실제 백그라운드에서 작업할 내용을 task로 정의한다.
@@ -39,14 +40,26 @@ def test_bg(id):
 def insert_check(id):
     print("강의번호 : ", id)
     print("체크가 시작됩니다.")
+    CGREENBG = '\33[42m'
+    CEND = '\33[0m'
     waitFlag = False  # 이거 플래그 안세워놓으니까 aws api 리턴값 받아올때 다른짓 하려고한다.. 리턴값받아와야 다음을 할수있게 !
+    first = datetime.now()
+    keysecond = first.second
     for i in range(60):  # 60번 반복이다 수업시간은 60분임.
+        if i != 0:
+            while True:
+                second = datetime.now()
+                if second.second == keysecond:
+                    break
+                elif (second.second + 5)%60 == keysecond:
+                    print(CEND + "연산 시작 5초전" + CGREENBG)
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
             print()
             print()
-            print("###########"+ stu.name + "학생의 FaceMatch 를 시작합니다" + "###########")
+
+            print("########### "+ CEND + stu.name + CGREENBG + " 학생의 FaceMatch 를 시작합니다" + "###########")
             dirname = "userImg/" + str(stu.id) + "_" + str(
                 stu.name)  # 잘라진 이미지가 어디 저장될지도 인자로 전달해줘야함. 이 디렉토리는 유저가 새로 추가될때 자동으로 생성됨.
             targetName = str(id) + "_" + str(i+1)+".jpg"
@@ -87,6 +100,8 @@ def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡
 
 # Created By 김성현
 def faceS(target, source, dirname):
+    CGREENBG = '\33[42m'
+    CEND = '\33[0m'
     print("target(수업중찍힌사진) : ", target)
     print("source(학생프로필사진) : ", source)
 
@@ -98,7 +113,7 @@ def faceS(target, source, dirname):
     s3 = boto3.client('s3')
 
     try:
-        response = client.compare_faces(SimilarityThreshold=80,
+        response = client.compare_faces(SimilarityThreshold=50,
                                         SourceImage={'S3Object': {'Bucket': bucket, 'Name': sourceFile}},
                                         TargetImage={'S3Object': {'Bucket': bucket, 'Name': targetFile}})
     except Exception as e:
@@ -128,6 +143,7 @@ def faceS(target, source, dirname):
         if similar > maxSimilar:
             maxSimilar = similar
         print()
+        print()
         position = faceMatch['Face']['BoundingBox']
         confidence = str(faceMatch['Face']['Confidence'])
         print()
@@ -135,13 +151,13 @@ def faceS(target, source, dirname):
         # draw.rectangle(bbox_to_coords(position, img_width, img_height)
         #
 
-        print("일치율 : ", end="")
-        print(similar)
+        print(CEND + "일치율 : " + str(similar) + CGREENBG)
+
 
         if similar > 80:  # 80이상일때만자르자
             crop_img = img.crop(bbox_to_coords(position, img_width, img_height))
             crop_img.save(savename)
-            print("#######"+"얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+"#######")
+            print("#######"+" 얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+" #######")
             print("Crop 된 이미지 저장 경로 :./" + savename)
 
 

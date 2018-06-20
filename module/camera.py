@@ -8,6 +8,7 @@
 
 
 from datetime import datetime
+import time
 from PIL import Image, ImageDraw
 import cv2
 import os
@@ -46,14 +47,17 @@ def bbox_to_coords(bbox, img_width, img_height):  #json 에서 얼굴좌표 땡�
     return [upper_left_x, upper_y, bottom_right_x, bottom_y]  #성현이 추가코드
 
 picture_num = 1
+s =50 # 시작후 5초 후 사진을 찍고 그담부터는 60초후에찍음
 while True:
 
+    print(second.second)
     check, frame  = video.read()   #비디오를 읽어온다.
 
     cv2.imshow('image', frame)
     k = cv2.waitKey(1)
 
     if first.minute != second.minute:   #시간을 정해서 캡쳐를 할 수 있다.
+    #if s==0:
 
         first = datetime.now()
         filename = first.year + first.month + first.day + first.hour + first.minute + first.second
@@ -100,8 +104,14 @@ while True:
         transfer = S3Transfer(client)
         transfer.upload_file(os.getcwd() + '/' + fname, bucket,
                              fname, extra_args={'ACL': 'public-read', 'ContentType': "image/jpeg"})  # file name 에 경로까지지정하면 s3내부에 경로가 생긴다.
+        # s=500 # 시간셋팅
 
     second = datetime.now()
+
+    # for s in range(60,0,-1):
+    #     print(s)
+    #     time.sleep(1)
+    #time.sleep(0.1)
 
     if k == ord('q'):
         break
