@@ -6,7 +6,7 @@
 #
 
 from __future__ import absolute_import
-재from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw
 import boto3
 from pprint import pprint
 from io import BytesIO
