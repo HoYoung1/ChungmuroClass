@@ -62,6 +62,8 @@ def insert_check(id):
 # Created By 조성재
 @background(schedule=60)
 def LearningModelStart():
+    test = 0
+    # for test
     
 
 # Created By 김성현
