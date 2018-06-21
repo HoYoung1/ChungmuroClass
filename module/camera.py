@@ -56,9 +56,15 @@ def bbox_to_coords(bbox, img_width, img_height, xy):  #json 에서 얼굴좌표 
 
 picture_num = 1
 s =50 # 시작후 5초 후 사진을 찍고 그담부터는 60초후에찍음
+CGREENBG = '\33[42m'
+CRED = '\033[91m'
+CEND = '\33[0m'
 while True:
 
-    print(second.second)
+    if second.second>50:
+        print(CRED+second.second+CEND)
+    else:
+        print(second.second)
     check, frame  = video.read()   #비디오를 읽어온다.
 
     cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
