@@ -192,6 +192,7 @@ def student_changeimg(request):
 def download_apk(request):
     #response = FileResponse(open('1.jpg', 'rb'), content_type='image/png')
     response = FileResponse(open('apk/attendance_check.apk', 'rb'), content_type='application/apk')
+    response['Content-Disposition'] = 'attachment; filename="attendance_check.apk"'
     return response
 
 
