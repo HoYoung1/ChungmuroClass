@@ -42,7 +42,7 @@ def insert_check(id):
     print("강의번호 : ", id)
     print("체크가 시작됩니다.")
     CGREENBG = '\33[42m'
-    CGREEN = '\33[4m'
+    CGREEN = '\33[44m'
     CRED = '\033[91m'
     CEND = '\33[0m'
     waitFlag = False  # 이거 플래그 안세워놓으니까 aws api 리턴값 받아올때 다른짓 하려고한다.. 리턴값받아와야 다음을 할수있게 !
@@ -53,9 +53,14 @@ def insert_check(id):
             while True:
                 second = datetime.now()
                 if second.second == keysecond:
+                    print("연산 시작")
                     break
                 elif (second.second + 5)%60 == keysecond:
                     print(CRED + "연산 시작 5초전" + CEND)
+                    print(CRED + "연산 시작 5초전" + CEND)
+                    print(CRED + "연산 시작 5초전" + CEND)
+                    print(CRED + "연산 시작 5초전" + CEND)
+                    break
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
@@ -73,13 +78,14 @@ def insert_check(id):
             chk.save()
         print("현재 : " + str(i) + "분 / 60 분")
         print("다음 60초를 기다립니다.")
-        time.sleep(60)  # 60초
+        #time.sleep(51)  # 60초
 
 # Created By 조성재
 @background(schedule=60)
 def LearningModelStart():
     test = 0
     # for test
+    # for test 2
     
 
 # Created By 김성현
