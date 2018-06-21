@@ -42,6 +42,7 @@ def insert_check(id):
     print("강의번호 : ", id)
     print("체크가 시작됩니다.")
     CGREENBG = '\33[42m'
+    CRED = '\033[91m'
     CEND = '\33[0m'
     waitFlag = False  # 이거 플래그 안세워놓으니까 aws api 리턴값 받아올때 다른짓 하려고한다.. 리턴값받아와야 다음을 할수있게 !
     first = datetime.now()
@@ -53,14 +54,14 @@ def insert_check(id):
                 if second.second == keysecond:
                     break
                 elif (second.second + 5)%60 == keysecond:
-                    print(CEND + "연산 시작 5초전" + CGREENBG)
+                    print(CRED + "연산 시작 5초전" + CEND)
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
             print()
             print()
 
-            print(CEND + "########### " + stu.name  + " 학생의 FaceMatch 를 시작합니다" + "###########" + CGREENBG)
+            print( "########### " + CGREENBG + stu.name + CEND  + " 학생의 FaceMatch 를 시작합니다" + "###########")
             dirname = "userImg/" + str(stu.id) + "_" + str(
                 stu.name)  # 잘라진 이미지가 어디 저장될지도 인자로 전달해줘야함. 이 디렉토리는 유저가 새로 추가될때 자동으로 생성됨.
             targetName = str(id) + "_" + str(i+1)+".jpg"
@@ -92,12 +93,21 @@ def get_image_from_file(filename):
         return imgfile.read()
 
 # Created By 김성현
-def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
+def bbox_to_coords(bbox, img_width, img_height,):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
     upper_left_x = bbox['Left'] * img_width
     upper_y = bbox['Top'] * img_height
     bottom_right_x = upper_left_x + (bbox['Width'] * img_width)
     bottom_y = upper_y + (bbox['Height'] * img_height)
     return [upper_left_x, upper_y, bottom_right_x, bottom_y]
+
+
+# Created By 김성현
+def bbox_to_coords_with_z(bbox, img_width, img_height,z):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
+    upper_left_x = bbox['Left'] * img_width
+    upper_y = bbox['Top'] * img_height
+    bottom_right_x = upper_left_x + (bbox['Width'] * img_width)
+    bottom_y = upper_y + (bbox['Height'] * img_height)
+    return [upper_left_x+z, upper_y+z, bottom_right_x+z, bottom_y+z]
 
 # Created By 김성현
 def faceS(target, source, dirname,stuName):
@@ -160,7 +170,7 @@ def faceS(target, source, dirname,stuName):
             crop_img.save(savename)
             print("#######"+" 얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+" #######")
             print("Crop 된 이미지 저장 경로 :./" + savename)
-            xy = bbox_to_coords(position, img_width, img_height, 1)
+            xy = bbox_to_coords_with_z(position, img_width, img_height, 1)
             font = ImageFont.truetype("arial", 20)
             draw.text((xy[0], xy[3]), str(similar)+"%"+stuName, font=font, fill="red")
             img.save("./edit.jpg")
