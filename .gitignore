@@ -7,6 +7,8 @@
 
 ./userImg/*
 
+# Img in class
+./module/*.jpg
 
 # Created by https://www.gitignore.io/api/django
 
