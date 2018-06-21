@@ -6,13 +6,14 @@
 #d
 
 from __future__ import absolute_import
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import boto3
 from pprint import pprint
 from io import BytesIO
 from datetime import datetime
 import requests
 import time
+from boto3.s3.transfer import S3Transfer
 
 from background_task import background
 
@@ -59,12 +60,12 @@ def insert_check(id):
             print()
             print()
 
-            print("########### "+ CEND + stu.name + CGREENBG + " 학생의 FaceMatch 를 시작합니다" + "###########")
+            print(CEND + "########### " + stu.name  + " 학생의 FaceMatch 를 시작합니다" + "###########" + CGREENBG)
             dirname = "userImg/" + str(stu.id) + "_" + str(
                 stu.name)  # 잘라진 이미지가 어디 저장될지도 인자로 전달해줘야함. 이 디렉토리는 유저가 새로 추가될때 자동으로 생성됨.
             targetName = str(id) + "_" + str(i+1)+".jpg"
             similar = faceS(targetName, stu.img_url,
-                            dirname)  # 이부분이 핵심임 aws api 사용해서 유사도 값도받아오고 얼굴 이미지도잘라서 디렉토리에 넣음 .
+                            dirname, stu.name)  # 이부분이 핵심임 aws api 사용해서 유사도 값도받아오고 얼굴 이미지도잘라서 디렉토리에 넣음 .
 
             chk = models.Check(user_id=stu, lecture_id=lec, similarity=int(similar), col_index=i)
             chk.save()
@@ -99,7 +100,7 @@ def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡
     return [upper_left_x, upper_y, bottom_right_x, bottom_y]
 
 # Created By 김성현
-def faceS(target, source, dirname):
+def faceS(target, source, dirname,stuName):
     CGREENBG = '\33[42m'
     CEND = '\33[0m'
     print("target(수업중찍힌사진) : ", target)
@@ -113,7 +114,7 @@ def faceS(target, source, dirname):
     s3 = boto3.client('s3')
 
     try:
-        response = client.compare_faces(SimilarityThreshold=50,
+        response = client.compare_faces(SimilarityThreshold=55,
                                         SourceImage={'S3Object': {'Bucket': bucket, 'Name': sourceFile}},
                                         TargetImage={'S3Object': {'Bucket': bucket, 'Name': targetFile}})
     except Exception as e:
@@ -159,6 +160,15 @@ def faceS(target, source, dirname):
             crop_img.save(savename)
             print("#######"+" 얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+" #######")
             print("Crop 된 이미지 저장 경로 :./" + savename)
+            xy = bbox_to_coords(position, img_width, img_height, 1)
+            font = ImageFont.truetype("arial", 20)
+            draw.text((xy[0], xy[3]), str(similar)+"%"+stuName, font=font, fill="red")
+            img.save("./edit.jpg")
+            client = boto3.client('s3')
+            transfer = S3Transfer(client)
+            transfer.upload_file("./edit.jpg", bucket,
+                                 targetFile, extra_args={'ACL': 'public-read',
+                                                    'ContentType': "image/jpeg"})  # file name 에 경로까지지정하면 s3내부
 
 
     return maxSimilar

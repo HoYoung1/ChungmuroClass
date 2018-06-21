@@ -9,7 +9,8 @@
 
 from datetime import datetime
 import time
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw,ImageFont
+
 import cv2
 import os
 from boto3.s3.transfer import S3Transfer
@@ -46,6 +47,13 @@ def bbox_to_coords(bbox, img_width, img_height):  #json 에서 얼굴좌표 땡�
     bottom_y = upper_y + (bbox['Height'] * img_height)
     return [upper_left_x, upper_y, bottom_right_x, bottom_y]  #성현이 추가코드
 
+def bbox_to_coords(bbox, img_width, img_height, xy):  #json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
+    upper_left_x = bbox['Left'] * img_width
+    upper_y = bbox['Top'] * img_height
+    bottom_right_x = upper_left_x + (bbox['Width'] * img_width)
+    bottom_y = upper_y + (bbox['Height'] * img_height)
+    return [upper_left_x+xy, upper_y+xy, bottom_right_x+xy, bottom_y+xy]  #성현이 추가코드
+
 picture_num = 1
 s =50 # 시작후 5초 후 사진을 찍고 그담부터는 60초후에찍음
 while True:
@@ -53,7 +61,11 @@ while True:
     print(second.second)
     check, frame  = video.read()   #비디오를 읽어온다.
 
-    cv2.imshow('image', frame)
+    cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty("window", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    #cv2.imshow("window", img)
+    #cv2.imshow('image', frame)
+    cv2.imshow('window', frame)
     k = cv2.waitKey(1)
 
     if first.minute != second.minute:   #시간을 정해서 캡쳐를 할 수 있다.
@@ -90,9 +102,21 @@ while True:
         savename = save_path + '/' +fname
         for facedeets in rekresp['FaceDetails']:  # 얼굴에 하이라이팅
             bbox = facedeets['BoundingBox']
-            draw.rectangle(bbox_to_coords(bbox, img_width, img_height),
-                           outline=(0, 200, 0))
+            print(bbox)
+            for l in range(4):
+                draw.rectangle(bbox_to_coords(bbox, img_width, img_height,l),
+                               outline=(0, 200, 0))
+            #print(bbox_to_coords(bbox,img_width,img_height,1))
+        #xy = bbox_to_coords(bbox, img_width, img_height, 1)
+        #font = ImageFont.truetype("arial.ttf", 22)
+        #font = ImageFont.truetype("font_path123")
+        #font = ImageFont.truetype("arial",20)
+        #draw.text((xy[0], xy[3]), "test", font=font,fill="red")
+
+
         del draw
+
+
 
         img.save(savename)  # 지정경로에 지정이름으로 저장
         i += 1  # 파일 여러개 돌릴때 for문 더 넣어서 수정하면 댐
