@@ -113,6 +113,7 @@ def bbox_to_coords_with_z(bbox, img_width, img_height,z):  # json 에서 얼굴�
 # Created By 김성현
 def faceS(target, source, dirname,stuName):
     CGREENBG = '\33[42m'
+    CGREEN = '\33[4m'
     CEND = '\33[0m'
     print("target(수업중찍힌사진) : ", target)
     print("source(학생프로필사진) : ", source)
@@ -163,7 +164,7 @@ def faceS(target, source, dirname,stuName):
         # draw.rectangle(bbox_to_coords(position, img_width, img_height)
         #
 
-        print(CEND + "일치율 : " + str(similar) + CGREENBG)
+        print(CGREEN + "일치율 : " + str(similar) + CEND)
 
 
         if similar > 80:  # 80이상일때만자르자
@@ -171,10 +172,15 @@ def faceS(target, source, dirname,stuName):
             crop_img.save(savename)
             print("#######"+" 얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+" #######")
             print("Crop 된 이미지 저장 경로 :./" + savename)
+            print(0)
             xy = bbox_to_coords_with_z(position, img_width, img_height, 1)
+            print(1)
             font = ImageFont.truetype("arial", 20)
+            print(2)
             draw.text((xy[0], xy[3]), str(similar)+"%"+stuName, font=font, fill="red")
+            print(3)
             img.save("./edit.jpg")
+            print(4)
             client = boto3.client('s3')
             transfer = S3Transfer(client)
             transfer.upload_file("./edit.jpg", bucket,
