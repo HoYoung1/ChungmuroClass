@@ -78,7 +78,7 @@ def insert_check(id):
             chk.save()
         print("현재 : " + str(i) + "분 / 60 분")
         print("다음 60초를 기다립니다.")
-        #time.sleep(51)  # 60초
+        time.sleep(1)  
 
 # Created By 조성재
 @background(schedule=60)
