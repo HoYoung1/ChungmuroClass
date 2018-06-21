@@ -57,10 +57,8 @@ def insert_check(id):
                     break
                 elif (second.second + 5)%60 == keysecond:
                     print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    break
+
+
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
@@ -132,7 +130,7 @@ def faceS(target, source, dirname,stuName):
     s3 = boto3.client('s3')
 
     try:
-        response = client.compare_faces(SimilarityThreshold=55,
+        response = client.compare_faces(SimilarityThreshold=65,
                                         SourceImage={'S3Object': {'Bucket': bucket, 'Name': sourceFile}},
                                         TargetImage={'S3Object': {'Bucket': bucket, 'Name': targetFile}})
     except Exception as e:
