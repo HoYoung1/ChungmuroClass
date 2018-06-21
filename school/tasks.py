@@ -42,6 +42,7 @@ def insert_check(id):
     print("강의번호 : ", id)
     print("체크가 시작됩니다.")
     CGREENBG = '\33[42m'
+    CGREEN = '\33[4m'
     CRED = '\033[91m'
     CEND = '\33[0m'
     waitFlag = False  # 이거 플래그 안세워놓으니까 aws api 리턴값 받아올때 다른짓 하려고한다.. 리턴값받아와야 다음을 할수있게 !
@@ -61,7 +62,7 @@ def insert_check(id):
             print()
             print()
 
-            print( "########### " + CGREENBG + stu.name + CEND  + " 학생의 FaceMatch 를 시작합니다" + "###########")
+            print( "******** " + CGREEN + stu.name + CEND  + " 학생의 FaceMatch 를 시작합니다" + "******** ")
             dirname = "userImg/" + str(stu.id) + "_" + str(
                 stu.name)  # 잘라진 이미지가 어디 저장될지도 인자로 전달해줘야함. 이 디렉토리는 유저가 새로 추가될때 자동으로 생성됨.
             targetName = str(id) + "_" + str(i+1)+".jpg"

@@ -62,7 +62,7 @@ CEND = '\33[0m'
 while True:
 
     if second.second>50:
-        print(CRED+second.second+CEND)
+        print(CRED+str(second.second)+CEND)
     else:
         print(second.second)
     check, frame  = video.read()   #비디오를 읽어온다.
