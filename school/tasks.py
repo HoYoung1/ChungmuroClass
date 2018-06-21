@@ -94,7 +94,7 @@ def get_image_from_file(filename):
         return imgfile.read()
 
 # Created By 김성현
-def bbox_to_coords(bbox, img_width, img_height,):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
+def bbox_to_coords(bbox, img_width, img_height):  # json 에서 얼굴좌표 땡겨오는거 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래, 사각형 꼭지점
     upper_left_x = bbox['Left'] * img_width
     upper_y = bbox['Top'] * img_height
     bottom_right_x = upper_left_x + (bbox['Width'] * img_width)
@@ -113,7 +113,7 @@ def bbox_to_coords_with_z(bbox, img_width, img_height,z):  # json 에서 얼굴�
 # Created By 김성현
 def faceS(target, source, dirname,stuName):
     CGREENBG = '\33[42m'
-    CGREEN = '\33[4m'
+    CGREEN = '\33[44m'
     CEND = '\33[0m'
     print("target(수업중찍힌사진) : ", target)
     print("source(학생프로필사진) : ", source)
@@ -175,7 +175,7 @@ def faceS(target, source, dirname,stuName):
             print(0)
             xy = bbox_to_coords_with_z(position, img_width, img_height, 1)
             print(1)
-            font = ImageFont.truetype("arial", 20)
+            font = ImageFont.truetype("arial.ttf", 20)
             print(2)
             draw.text((xy[0], xy[3]), str(similar)+"%"+stuName, font=font, fill="red")
             print(3)
