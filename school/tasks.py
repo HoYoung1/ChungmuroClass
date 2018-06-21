@@ -85,6 +85,7 @@ def insert_check(id):
 def LearningModelStart():
     test = 0
     # for test
+    # for test 2
     
 
 # Created By 김성현
