@@ -172,15 +172,18 @@ def faceS(target, source, dirname,stuName):
             crop_img.save(savename)
             print("#######"+" 얼굴이 정상적으로 crop되어 해당 유저 디렉토리에 저장되었습니다."+" #######")
             print("Crop 된 이미지 저장 경로 :./" + savename)
-            print(0)
+
             xy = bbox_to_coords_with_z(position, img_width, img_height, 1)
-            print(1)
+
             #font = ImageFont.truetype("arial.ttf", 20)
-            print(2)
-            draw.text((xy[0], xy[3]), str(similar)+"%"+stuName, fill="red")
-            print(3)
+
+            font = ImageFont.truetype("/usr/share/fonts/dejavu/DejaVuSerif.ttf", 20)
+
+
+            draw.text((xy[0], xy[3]), str(similar)+"%"+stuName,font=font, fill="red")
+
             img.save("./edit.jpg")
-            print(4)
+
             client = boto3.client('s3')
             transfer = S3Transfer(client)
             transfer.upload_file("./edit.jpg", bucket,
