@@ -53,14 +53,14 @@ def insert_check(id):
             while True:
                 second = datetime.now()
                 if second.second == keysecond:
+                    print("second.second",second.second)
+                    print(keysecond)
                     print("연산 시작")
                     break
                 elif (second.second + 5)%60 == keysecond:
                     print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    print(CRED + "연산 시작 5초전" + CEND)
-                    break
+              
+
         lec = models.Lecture.objects.get(id=id)
         for stu in lec.students.all():
             print()
@@ -78,7 +78,7 @@ def insert_check(id):
             chk.save()
         print("현재 : " + str(i) + "분 / 60 분")
         print("다음 60초를 기다립니다.")
-        time.sleep(0.5)
+        time.sleep(10)
 
 # Created By 조성재
 @background(schedule=60)
