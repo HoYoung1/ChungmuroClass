@@ -67,11 +67,13 @@ while True:
         print(second.second)
     check, frame  = video.read()   #비디오를 읽어온다.
 
-    cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
-    cv2.setWindowProperty("window", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-    #cv2.imshow("window", img)
-    #cv2.imshow('image', frame)
-    cv2.imshow('window', frame)
+    # cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
+    # cv2.setWindowProperty("window", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    # #cv2.imshow("window", img)
+    # #cv2.imshow('image', frame)
+    # cv2.imshow('window', frame)
+
+    cv2.imshow('image', frame)
     k = cv2.waitKey(1)
 
     if first.minute != second.minute:   #시간을 정해서 캡쳐를 할 수 있다.
