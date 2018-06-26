@@ -60,3 +60,10 @@ $pip install MODULE_NAME
 $python3 manage.py process_tasks
 ```
 
+### 결과화면 ###
+<p>
+<img src="결과화면.jpg"  width="300">
+</p>
+
+
+
