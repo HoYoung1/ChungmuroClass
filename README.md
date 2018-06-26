@@ -62,7 +62,7 @@ $python3 manage.py process_tasks
 
 ### 결과화면 ###
 <p>
-<img src="결화면1.jpg"  width="300">
+<img src="결고화면1.jpg"  width="300">
 </p>
 
 
